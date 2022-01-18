@@ -46,6 +46,7 @@
 
     <TextView
         android:id="@+id/service_question"
+        style="@style/Widget.TipCalculator.TextView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -60,25 +61,28 @@
         android:id="@+id/tip_options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:checkedButton="@id/tip_amazing"
         app:layout_constraintStart_toStartOf="@id/service_question"
         app:layout_constraintTop_toBottomOf="@+id/service_question">
 
         <RadioButton
             android:id="@+id/tip_amazing"
+            android:paddingStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/amazing_20" />
 
         <RadioButton
             android:id="@+id/tip_good"
+            android:paddingStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/good_18" />
 
         <RadioButton
             android:id="@+id/tip_ok"
+            android:paddingStart="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ok_15" />
@@ -119,6 +123,7 @@
 
     <TextView
         android:id="@+id/tip_result"
+        style="@style/Widget.TipCalculator.TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
