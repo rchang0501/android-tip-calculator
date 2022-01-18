@@ -2,10 +2,47 @@ package com.example.tipcalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import com.example.tipcalculator.databinding.ActivityMainBinding
+import java.text.NumberFormat
+import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.calculateButton.setOnClickListener(){
+            calculateTip()
+        }
+    }
+
+    private fun calculateTip() {
+        val costString = binding.costOfService.text.toString()
+        val cost = costString.toDouble()
+
+        val tipId = binding.tipOptions.checkedRadioButtonId
+
+        val tipPercentage = when (tipId){
+            R.id.tip_amazing -> 0.2
+            R.id.tip_good -> 0.18
+            else -> 0.12
+        }
+
+        var tip = tipPercentage * cost
+
+        val roundUp: Boolean = binding.roundUp.isChecked
+
+        if (roundUp){
+            tip = ceil(tip)
+        }
+
+        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
     }
 }
